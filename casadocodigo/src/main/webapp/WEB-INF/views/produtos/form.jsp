@@ -15,7 +15,7 @@ PC = ProdutosController # método "gravar" -->
 <form:form action="${s:mvcUrl('PC#gravar').build() }" method="POST" commandName="produto">
 	<div>
 		<label>Título</label>
-		<form:input path="titulo" />
+		<form:input path="titulo" /><!-- O form:input permite que os valores digitados no formulário sejam mantidos caso haja qualquer erro de bind -->
 		<form:errors path="titulo"/>
 	</div>
 	<div>
