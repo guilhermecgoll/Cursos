@@ -32,6 +32,8 @@ public class Produto {
 	@ElementCollection
 	private List<Preco> precos;
 	
+	private String sumarioPath;
+	
 	public long getId() {
 		return id;
 	}
@@ -73,6 +75,12 @@ public class Produto {
 	public String toString() {
 		return "Produto [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas
 				+ ", dataLancamento=" + dataLancamento + ", precos=" + precos + "]";
+	}
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
 	}
 	
 }

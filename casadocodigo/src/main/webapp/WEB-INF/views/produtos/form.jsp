@@ -12,7 +12,7 @@
 <body>
 <!-- Com a taglib do Spring, é possível chamar o controle através das iniciais da classe mapeada.
 PC = ProdutosController # método "gravar" -->
-<form:form action="${s:mvcUrl('PC#gravar').build() }" method="POST" commandName="produto">
+<form:form action="${s:mvcUrl('PC#gravar').build() }" method="POST" commandName="produto" enctype="multipart/form-data">
 	<div>
 		<label>Título</label>
 		<form:input path="titulo" /><!-- O form:input permite que os valores digitados no formulário sejam mantidos caso haja qualquer erro de bind -->
@@ -40,6 +40,10 @@ PC = ProdutosController # método "gravar" -->
 			<form:input type="hidden" path="precos[${status.index}].tipo" value="${tipoPreco }"/>
 		</div>
 	</c:forEach>
+	<div>
+		<label>Sumário</label>
+		<input name="sumario" type="file"/>
+	</div>
 	<button type="submit">Cadastrar</button>
 </form:form>
 
