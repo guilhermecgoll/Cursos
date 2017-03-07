@@ -18,12 +18,15 @@ public class FileSaver {
 
 	public String write(String baseFolder, MultipartFile file) {
 		try {
-			String realPath = request.getServletContext().getRealPath("/"+baseFolder);
-			String path = realPath + "/" + file.getOriginalFilename();
-			String nome = FilenameUtils.getBaseName(path);
-			file.transferTo(new File(nome));
-			
-			return baseFolder + "/" + file.getOriginalFilename();
+//			String realPath = request.getServletContext().getRealPath("/"+baseFolder);
+//			String path = realPath + "/" + file.getOriginalFilename();
+//			String nome = FilenameUtils.getBaseName(path);
+//			file.transferTo(new File(nome));
+//			
+//			return baseFolder + "/" + file.getOriginalFilename();
+			String path = baseFolder + "/" + file.getOriginalFilename();
+            file.transferTo(new File(path));
+            return path;
 		} catch (IllegalStateException | IOException e) {
 			throw new RuntimeException(e);
 		}
