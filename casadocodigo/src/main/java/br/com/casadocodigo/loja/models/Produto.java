@@ -15,9 +15,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Produto {
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	
 	private String titulo;
 	
@@ -34,10 +35,10 @@ public class Produto {
 	
 	private String sumarioPath;
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public List<Preco> getPrecos() {
@@ -81,6 +82,27 @@ public class Produto {
 	}
 	public void setSumarioPath(String sumarioPath) {
 		this.sumarioPath = sumarioPath;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 	
 }

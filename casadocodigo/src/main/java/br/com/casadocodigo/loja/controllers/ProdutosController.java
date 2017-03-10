@@ -76,7 +76,7 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping("/detalhe/{id}")
-	public ModelAndView detalhe(@PathVariable("id") long id) {
+	public ModelAndView detalhe(@PathVariable("id") Integer id) {
 		ModelAndView modelAndView = new ModelAndView("produtos/detalhe");
 		Produto produto = produtoDao.find(id);
 		
