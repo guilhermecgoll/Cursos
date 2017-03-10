@@ -3,8 +3,11 @@ package br.com.casadocodigo.loja.models;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
 @Component
+@Scope(value=WebApplicationContext.SCOPE_SESSION) //indica o escopo de acesso à este bean, neste caso, é por sessão/ usuário
 public class CarrinhoCompras {
 	
 	private Map<CarrinhoItem, Integer> itens = new LinkedHashMap<CarrinhoItem, Integer>();
