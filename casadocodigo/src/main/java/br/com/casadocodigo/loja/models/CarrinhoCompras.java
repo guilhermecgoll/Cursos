@@ -7,10 +7,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 @Component
-@Scope(value=WebApplicationContext.SCOPE_SESSION) //indica o escopo de acesso à este bean, neste caso, é por sessão/ usuário
+@Scope(value=WebApplicationContext.SCOPE_SESSION, //indica o escopo de acesso à este bean, neste caso, é por sessão/ usuário
+		proxyMode=ScopedProxyMode.TARGET_CLASS) //indica que o Spring vai fazer a interligação dos objetos. A alternativa
+//seria colocar SCOPE_REQUEST em todos os controllers
 public class CarrinhoCompras implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -45,6 +48,12 @@ public class CarrinhoCompras implements Serializable{
 			total = total.add(getTotal(item));
 		}
 		return total;
+	}
+	
+	public void remover(Integer produtoId, TipoPreco tipoPreco) {
+		Produto produto = new Produto();
+		produto.setId(produtoId);
+		itens.remove(new CarrinhoItem(produto, tipoPreco));
 	}
 
 }
